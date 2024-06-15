@@ -1,18 +1,12 @@
-import { useContext } from 'react';
-import { AppState } from '../App';
+
+
 
 const Home = () => {
-  const {user} = useContext(AppState);
-
   return (
-    <>
-      <h1>Home</h1>
-      <br />
-      <br />
-      <br />
-      <h2>{user.username}</h2>
-    </>
+    <div>
+      <h1>Welcome to the Home Page</h1>
+    </div>
   );
-}
+};
 
-export default Home
+export default Home;

@@ -47,7 +47,7 @@ const Register = () => {
         email: emailValue,
         password: passwordValue
       });
-      alert("register successful. Please login");
+      // alert("register successful. Please login");
       navigate('/login');
     } catch (error) {
       console.log(error.response);

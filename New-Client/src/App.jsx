@@ -3,10 +3,13 @@ import './App.css'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Logout from './pages/Logout';
+import Navbar from './pages/Navbar';
 import { useEffect, useState, createContext } from 'react';
 import axios from './pages/axiosConfig';
 
 export const AppState = createContext();
+
 function App() {
   const [user, setUser] = useState({});
   const token = localStorage.getItem('token');
@@ -26,15 +29,19 @@ function App() {
   }
 
   useEffect(() => {
-    checkUser();
-  }, []);
+    if (token) {
+      checkUser();
+    }
+  }, [token]);
 
   return (
-    <AppState.Provider value={{user, setUser}}>
+    <AppState.Provider value={{ user, setUser }}>
+      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/logout" element={<Logout />} />
       </Routes>
     </AppState.Provider>
   );
