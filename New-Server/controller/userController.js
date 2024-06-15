@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 
 // Register User
 async function register(req, res) {
-  const { username, firstname, lastname, email, password } = req.body;
+    const { username, firstname, lastname, email, password } = req.body;
 if (!email || !username || !firstname || !lastname || !password) {
     return res.status(StatusCodes.BAD_REQUEST).json({ msg: "please provide all required fields" });
 }

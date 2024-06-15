@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
 // user routes middleware file
 const userRoutes = require("./New-Server/routes/userRoute");
 // question routes middleware file
-// const questionRoutes = require("./New-Server/routes/questionRoute");
+const questionRoutes = require("./New-Server/routes/questionRoute");
 // authentication middleware
 const authMiddleware = require('./New-Server/middleware/authMiddleware');
 
@@ -26,7 +26,11 @@ app.use(express.json());
 // user routes middleware
 app.use("/api/users", userRoutes);
 // questions routes middleware
-// app.use("/api/questions", authMiddleware, questionRoutes);
+
+app.use("/api/questions", (req, res, next) => {
+    console.log("Request received at /api/questions");
+    next();
+}, questionRoutes); // Use questionRoutes without authMiddleware here
 
 // Commented out MySQL-specific code
 // async function start() {

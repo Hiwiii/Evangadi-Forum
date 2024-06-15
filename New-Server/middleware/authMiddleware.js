@@ -18,6 +18,7 @@ const authMiddleware = async (req, res, next) => {
 	try {
 		const { username, userid } = jwt.verify(token, process.env.JWT_SECRET);
 		req.user = { username, userid };
+		console.log("User authenticated:", req.user); 
 		next();
 	} catch (error) {
 		return res.status(StatusCodes.UNAUTHORIZED).json({ msg: 'Invalid authentication' });
